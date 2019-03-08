@@ -1,0 +1,27 @@
+#@layout()
+#define main()
+<div class="title">数据图表 可视化</div>
+<div class="mdui-row">
+    #for(x:chartAbleColumn)
+    <a href="/chart/item/#(x.name)">
+        <div class="mdui-col-md-2">
+            <div class="tipsBox" style="color: #333;">
+                <h3># #(x.memo)
+                    <br>
+                    <small>( #(x.category) )</small>
+                </h3>
+                <br>
+                <span class="tag">
+            <small>#(x.name)</small>
+            -
+            <small>#(x.type)</small>
+                </span>
+            </div>
+        </div>
+    </a>
+    #else
+</div>
+<span class="tag">暂无可以进行可视化分析的数据列</span>
+#end
+
+#end

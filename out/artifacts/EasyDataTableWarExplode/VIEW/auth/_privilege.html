@@ -1,0 +1,58 @@
+<ul class="mdui-list">
+    <li class="mdui-list-item mdui-ripple">
+        <label class="mdui-checkbox" #if(auth.authSuperAdmin??== 1) status="selected" #end>
+            <input type="checkbox" name="auth.authSuperAdmin" #if(auth.authSuperAdmin??== 1) checked value="1" #end/>
+            <i class="mdui-checkbox-icon"></i>
+            超级管理员 权限
+        </label>
+    </li>
+    <li class="mdui-list-item mdui-ripple">
+        <label class="mdui-checkbox" #if(auth.authLogin??== 1) status="selected" #end>
+            <input type="checkbox" name="auth.authLogin" #if(auth.authLogin??== 1) checked value="1" #end/>
+            <i class="mdui-checkbox-icon"></i>
+            系统登陆 权限
+        </label>
+    </li>
+    <li class="mdui-list-item mdui-ripple">
+        <label class="mdui-checkbox" #if(auth.authSelect??== 1) status="selected" #end>
+            <input type="checkbox" name="auth.authSelect" #if(auth.authSelect??== 1) checked value="1" #end/>
+            <i class="mdui-checkbox-icon"></i>
+            数据查询 权限
+        </label>
+    </li>
+    <li class="mdui-list-item mdui-ripple">
+        <label class="mdui-checkbox" #if(auth.authAdd??== 1) status="selected" #end>
+            <input type="checkbox" name="auth.authAdd" #if(auth.authAdd??== 1) checked value="1" #end/>
+            <i class="mdui-checkbox-icon"></i>
+            数据添加 权限
+        </label>
+    </li>
+    <li class="mdui-list-item mdui-ripple">
+        <label class="mdui-checkbox" #if(auth.authModify??== 1) status="selected" #end>
+            <input type="checkbox" name="auth.authModify" #if(auth.authModify??== 1) checked value="1" #end/>
+            <i class="mdui-checkbox-icon"></i>
+            数据修改 权限
+        </label>
+    </li>
+    <li class="mdui-list-item mdui-ripple">
+        <label class="mdui-checkbox" #if(auth.authDelete??== 1) status="selected" #end>
+            <input type="checkbox" name="auth.authDelete" #if(auth.authDelete??== 1) checked value="1" #end/>
+            <i class="mdui-checkbox-icon"></i>
+            数据删除 权限
+        </label>
+    </li>
+    <li class="mdui-list-item mdui-ripple">
+        <label class="mdui-checkbox" #if(auth.authLog??== 1) status="selected" #end>
+            <input type="checkbox" name="auth.authLog" #if(auth.authLog??== 1) checked value="1" #end/>
+            <i class="mdui-checkbox-icon"></i>
+            查看系统日志 权限
+        </label>
+    </li>
+    <li class="mdui-list-item mdui-ripple">
+        <label class="mdui-checkbox" #if(auth.authCreateAccount??== 1) status="selected" #end>
+            <input type="checkbox" name="auth.authCreateAccount" #if(auth.authCreateAccount??== 1) checked value="1" #end/>
+            <i class="mdui-checkbox-icon"></i>
+            创建授权用户 权限
+        </label>
+    </li>
+</ul>

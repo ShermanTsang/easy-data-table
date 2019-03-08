@@ -1,0 +1,178 @@
+#@layout()
+#define header()
+<script type="text/javascript" src="/RESOURCE/js/echarts.min.js"></script>
+#end
+
+#define main()
+<div class="title">#(column.get(0).memo) 数据分析</div>
+<div class="mdui-row">
+
+    <div class="mdui-col-md-3">
+        <div class="tipsBox" style="color: #333;" align="center">
+            <span class="number">#(staticTotal.get(0).count)</span>
+            <br> 条该列值 不为空 数据
+        </div>
+        <div class="tipsBox" style="color: #333;" align="center">
+            <span class="number">#(staticDistinct.get(0).count)</span>
+            <br> 条该列值 不重复 数据
+        </div>
+    </div>
+    <div class="mdui-col-md-9">
+        <div class="tipsBox" style="height: 410px;overflow: scroll;" align="center">
+            <div id="chartDataDistinct" style="height: 400px;width: auto;"></div>
+        </div>
+        <div class="tipsBox" style="height: 300px;overflow: scroll;" align="center">
+            <div id="chartDataTop30" style="height: 600px;width: auto;"></div>
+        </div>
+        <div class="tipsBox" style="height: 400px;overflow: scroll;" align="center">
+            <div id="chartDataSource" style="height: 400px;width: auto;"></div>
+        </div>
+    </div>
+</div>
+#end
+
+#define footer()
+<script>#include("dataMap.html")</script>
+<script type="text/javascript">
+    var chartDataTop30 = echarts.init(document.getElementById('chartDataTop30'));
+    var chartDataDistinct = echarts.init(document.getElementById('chartDataDistinct'));
+    var chartDataSource = echarts.init(document.getElementById('chartDataSource'));
+    optionDataTop30 = {
+        tooltip: {},
+        title: [{
+            subtext: '数据总量TOP30#(column.get(0).memo) ',
+            x: '10%',
+            textAlign: 'left'
+        }],
+        grid: [{
+            top: 30,
+            width: '90%',
+            bottom: 10,
+            left: 20,
+            containLabel: true
+        }],
+        xAxis: [{
+            type: 'value',
+            max: DataTop30Data.all,
+            splitLine: {
+                show: false
+            }
+        }],
+        yAxis: [{
+            type: 'category',
+            data: Object.keys(DataTop30Data.charts),
+            axisLabel: {
+                interval: 0,
+                rotate: 30
+            },
+            splitLine: {
+                show: false
+            }
+        }],
+        series: [{
+            type: 'bar',
+            stack: 'chart',
+            z: 3,
+            label: {
+                normal: {
+                    position: 'right',
+                    show: true
+                }
+            },
+            data: Object.keys(DataTop30Data.charts).map(function (key) {
+                return DataTop30Data.charts[key];
+            })
+        }, {
+            type: 'bar',
+            stack: 'chart',
+            silent: true,
+            itemStyle: {
+                normal: {
+                    color: '#eee'
+                }
+            },
+            data: Object.keys(DataTop30Data.charts).map(function (key) {
+                return DataTop30Data.all - DataTop30Data.charts[key];
+            })
+        }]
+    };
+    optionDataDistinct = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}: {c} 条 ({d}%)"
+        },
+        title: [{
+            subtext: '所有#(column.get(0).memo)分类数量占比',
+            x: '10%',
+            textAlign: 'center'
+        }],
+        legend: {
+            type: 'scroll',
+            orient: 'vertical',
+            x: 'right',
+            data: DataDistinctLegend
+        },
+        series: [
+            {
+                name: '数据源',
+                type: 'pie',
+                radius: ['70%', '90%'],
+                avoidLabelOverlap: false,
+                label: {
+                    normal: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        show: true,
+                        textStyle: {
+                            fontSize: '25',
+                            fontWeight: 'bold'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        show: false
+                    }
+                },
+                data: DataDistinctData
+            }
+        ]
+    };
+    optionDataSource = {
+        title : {
+            subtext: '#(column.get(0).memo) 各来源库数据量占比',
+            x:'left'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'right',
+            data: DataSourceLegend
+        },
+        series : [
+            {
+                name: '数据量占比',
+                type: 'pie',
+                radius : '55%',
+                center: ['50%', '50%'],
+                data:DataSourceData,
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+    chartDataTop30.setOption(optionDataTop30);
+    chartDataDistinct.setOption(optionDataDistinct);
+    chartDataSource.setOption(optionDataSource);
+</script>
+#end

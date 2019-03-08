@@ -1,0 +1,41 @@
+<script>
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "progressBar": true,
+        "positionClass": "toast-top-center",
+        "onclick": null,
+        "showDuration": "150",
+        "hideDuration": "1000",
+        "timeOut": "3000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+</script>
+
+#if (notifyInfo != null)
+<script>
+    toastr.info('#(notifyInfo)');
+</script>
+#end
+
+#if (notifySuccess != null)
+<script>
+    toastr.success('#(notifySuccess)');
+</script>
+#end
+
+#if (notifyWarning != null)
+<script>
+    toastr.warning('#(notifyWarning)');
+</script>
+#end
+
+#if (notifyError != null)
+<script>
+    toastr.error('#(notifyError)');
+</script>
+#end

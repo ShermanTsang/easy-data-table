@@ -1,0 +1,21 @@
+<header class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-toolbar-hide">
+    <div class="mdui-toolbar mdui-color-theme mdui-color-indigo">
+        <a href="#" class="mdui-typo-title">#(getConfig("siteName"))</a>
+        <div class="mdui-toolbar-spacer"></div>
+        <a href="/logout" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '注销当前账号'}"><i
+                class="mdui-icon material-icons">reply_all</i></a>
+        <a href="javascript:history.go(0);" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '刷新页面'}"><i
+                class="mdui-icon material-icons">refresh</i></a>
+    </div>
+    <div class="mdui-tab mdui-color-white mdui-tab-centered" mdui-tab>
+        <a href="/dashboard" class="mdui-ripple mdui-tab-active" mdui-tooltip="{content: '数据看板'}">
+            <label>数据看板</label>
+        </a>
+        <a href="/data" class="mdui-ripple mdui-tab-active" mdui-tooltip="{content: '搜索数据'}">
+            <label>数据搜索</label>
+        </a>
+        <a href="/chart" class="mdui-ripple mdui-tab-active" mdui-tooltip="{content: '数据图表与数据可视化分析'}">
+            <label>数据图表</label>
+        </a>
+    </div>
+</header>

@@ -1,0 +1,17 @@
+var KeywordTop20Indicator =
+[ #for(c : chartKeywordTop20) {text: '#(c.content)', max: #(chartKeywordTop20.get(0).count)}, #end ];
+var KeywordTop20Data =
+[ #for(c : chartKeywordTop20) #(c.count), #end ];
+var SourceTop10Data =
+[ #for(c : chartSourceAll) { value:#(c.count) , name: '#(c.LaiYuan)'}, #end ];
+var SourceAllData =
+[ #for(c : chartSourceAll) { value:#(c.count), name:'#(c.LaiYuan)'}, #end ];
+var SourceAllLegend =
+[ #for(c : chartSourceAll) '#(c.LaiYuan)', #end];
+var DateClickData = [#for(c:chartDateClick) ["#(c.day)",#(c.count)],#end];
+var dateList = DateClickData.map(function (item) {
+return item[0];
+});
+var valueList = DateClickData.map(function (item) {
+return item[1];
+});

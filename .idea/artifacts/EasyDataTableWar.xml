@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="EasyDataTableWar">
+    <output-path>$PROJECT_DIR$/out/artifacts/EasyDataTableWar</output-path>
+    <root id="archive" name="EasyDataTableWar.war">
+      <element id="artifact" artifact-name="EasyDataTableWarExplode" />
+      <element id="module-output" name="EasyDataTable" />
+    </root>
+  </artifact>
+</component>

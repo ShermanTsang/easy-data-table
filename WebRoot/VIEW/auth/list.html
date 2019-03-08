@@ -1,0 +1,12 @@
+#@layout()
+#define main()
+<div class="title">授权用户管理
+    <span style="float: right;"><a href="/auth/add"><i class="mdui-icon material-icons">add</i> 添加</a></span>
+</div>
+    #if(accountPage != null)
+        #include("_table.html")
+        #@paginate(accountPage.pageNumber, accountPage.totalPage, "/account/")
+    #else
+        换个关键字试试
+    #end
+#end

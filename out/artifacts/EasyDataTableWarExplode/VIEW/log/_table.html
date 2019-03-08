@@ -1,0 +1,29 @@
+<div class="mdui-table-fluid">
+    <table class="mdui-table mdui-table-hoverable">
+        <thead>
+        <tr>
+            <th>编号</th>
+            <th>类型</th>
+            <th>用户</th>
+            <th>内容</th>
+            <th>ip地址</th>
+            <th>时间</th>
+        </tr>
+        </thead>
+        <tbody>
+        #for(x : logPage.getList())
+        <tr>
+            <td>#(x.id)</td>
+            <td>#(x.type)</td>
+            <td>#(x.username)</td>
+            <td>#(x.content)</td>
+            <td>#(x.ip)</td>
+            <td>#(x.time)</td>
+            <td>
+                <a class="mdui-btn mdui-ripple" href="/log/delete/#(x.id)">删除</a>
+            </td>
+        </tr>
+        #end
+        </tbody>
+    </table>
+</div>

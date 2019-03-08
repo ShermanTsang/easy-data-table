@@ -1,0 +1,53 @@
+#@layout()
+#define main()
+<div class="mdui-row">
+    <div class="mdui-col-md-4 mdui-col-offset-md-4">
+        <div class="title">登陆</div>
+        <form action="/auth/submit" method="post">
+            <div class="mdui-textfield">
+                <i class="mdui-icon material-icons">account_circle</i>
+                <label class="mdui-textfield-label">用户名</label>
+                <input class="mdui-textfield-input" type="text" name="username"/>
+            </div>
+            <div class="mdui-textfield">
+                <i class="mdui-icon material-icons">lock</i>
+                <label class="mdui-textfield-label">密码</label>
+                <input class="mdui-textfield-input" type="password" name="password"/>
+            </div>
+            <!--<div class="mdui-textfield">-->
+                <!--<i class="mdui-icon material-icons">code</i>-->
+                <!--<label class="mdui-textfield-label">验证码</label>-->
+                <!--<input class="mdui-textfield-input" type="text" name="captcha" required-->
+                       <!--style="width:calc(100% - 180px)"/>-->
+                <!--<div style="cursor:hand;position: absolute;bottom: 0;right: 0;">-->
+                    <!--<img style="border: 2px solid #999;" id="captcha"-->
+                                                                         <!--src="/captcha"-->
+                                                                         <!--alt="二维码"></div>-->
+            <!--</div>-->
+            <button class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple" type="submit">登陆</button>
+        </form>
+        <div class="tipsBox">
+            <span class="tag">相关说明</span> <br>#(getConfig("instruction") ?? "暂无公告")
+        </div>
+        <div class="tipsBox">
+            <span class="tag">登陆提示</span> <br>#(getConfig("loginTips") ?? "暂无登陆提示")
+        </div>
+    </div>
+</div>
+
+#end
+
+#define header()
+<style>.mdui-bottom-nav, .mdui-tab {
+    display: none !important;
+}</style>
+#end
+
+#define footer()
+<script>
+    $("#captcha").click(function () {
+        var time = new Date();
+        $(this).attr("src", "/captcha?" + time.getTime());
+    });
+</script>
+#end

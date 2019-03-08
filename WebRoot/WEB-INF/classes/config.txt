@@ -1,0 +1,4 @@
+jdbcUrl = jdbc:mysql://localhost/EasyDataTable?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+user = EasyDataTable
+password = 123456
+devMode = true

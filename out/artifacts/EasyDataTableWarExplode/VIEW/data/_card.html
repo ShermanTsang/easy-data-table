@@ -1,0 +1,68 @@
+<div class="mdui-panel mdui-panel-gapless" mdui-panel="{accordion: false}">
+    #for(x : dataPage.getList())
+    <div class="mdui-panel-item">
+        <div class="mdui-panel-item-header">
+            <div class="mdui-panel-item-title">
+                <small>##(x.id)</small>
+                #(x.XingMing)
+            </div>
+            <div class="mdui-panel-item-summary">
+                <small>
+                    #(x.XueHao ??) #(x.XingBie ??) #(x.ShengRi ??) #(x.ZuZhi ??)
+                    #(x.YuanXi ??) #(x.ZhuanYe ??) #(x.BanJi ??) #(x.ZhiWu ??)
+                </small>
+            </div>
+            <div class="mdui-panel-item-summary">
+                <small>
+                    #if(x.LaiYuan != null && x.LaiYuan != '')
+                    数据源:#(x.LaiYuan)
+                    #else
+                    未知数据源
+                    #end
+                </small>
+            </div>
+            <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+        </div>
+        <div class="mdui-panel-item-body">
+            <p id="#(x.id)">
+                #include("_item.html",name="ID",data=x.id)
+                #include("_item.html",name="编号",data=x.BianHao)
+                #include("_item.html",name="学号",data=x.XueHao)
+                #include("_item.html",name="姓名",data=x.XingMing)
+                #include("_item.html",name="来源",data=x.LaiYuan)
+                #include("_item.html",name="身份证号",data=x.ShenFenZhengHao)
+                #include("_item.html",name="性别",data=x.XingBie)
+                #include("_item.html",name="生日",data=x.ShengRi)
+                #include("_item.html",name="民族",data=x.MinZu)
+                #include("_item.html",name="政治面貌",data=x.ZhengZhiMianMao)
+                #include("_item.html",name="院系",data=x.YuanXi)
+                #include("_item.html",name="专业",data=x.ZhuanYe)
+                #include("_item.html",name="班级",data=x.BanJi)
+                #include("_item.html",name="层次",data=x.CengCi)
+                #include("_item.html",name="年级",data=x.NianJi)
+                #include("_item.html",name="分数",data=x.FenShu)
+                #include("_item.html",name="地址",data=x.DiZhi)
+                #include("_item.html",name="宿舍",data=x.SuShe)
+                #include("_item.html",name="组织",data=x.ZuZhi)
+                #include("_item.html",name="生源地",data=x.ShengYuanDi)
+                #include("_item.html",name="邮编",data=x.YouBian)
+                #include("_item.html",name="手机",data=x.ShouJi)
+                #include("_item.html",name="电话",data=x.DianHua)
+                #include("_item.html",name="QQ",data=x.QQ)
+                #include("_item.html",name="邮件",data=x.YouJian)
+                #include("_item.html",name="高中",data=x.GaoZhong)
+                #include("_item.html",name="备注",data=x.BeiZhu)
+                #include("_item.html",name="省区",data=x.ShengQu)
+                #include("_item.html",name="职务",data=x.ZhiWu)
+
+                <span class="mdui-float-right">
+                    <a class="tag mdui-ripple" href="/data/delete/#(x.id)"
+                       mdui-tooltip="{content: '删除 ##(x.id) #(x.username)'}">删除</a>
+                    <a class="tag mdui-ripple" href="/data/edit/#(x.id)"
+                       mdui-tooltip="{content: '修改 ##(x.id) #(x.username)'}">修改</a>
+                </span>
+            </p>
+        </div>
+    </div>
+    #end
+</div>

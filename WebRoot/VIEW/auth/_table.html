@@ -1,0 +1,36 @@
+<div class="mdui-table-fluid">
+    <table class="mdui-table mdui-table-hoverable">
+        <thead>
+        <tr>
+            <th>编号</th>
+            <th>用户名</th>
+            <th>密码</th>
+            <th>备注</th>
+            <th>创建时间</th>
+            <th>有效起始时间</th>
+        </tr>
+        </thead>
+        <tbody>
+        #for(x : accountPage.getList())
+        <tr mdui-tooltip="{content: '#if(x.authSuperAdmin== 1) √ #else × #end 超级管理员 #if(x.authLogin== 1) √ #else × #end 系统登陆 #if(x.authSelect== 1) √ #else × #end 数据查询 #if(x.authAdd== 1) √ #else × #end 数据增加 #if(x.authModify== 1) √ #else × #end 数据修改 #if(x.authDelete== 1) √ #else × #end 数据删除 #if(x.authLog== 1) √ #else × #end 查看操作日志 #if(x.authCreateAccount== 1) √ #else × #end 创建授权用户'}">
+            <td>#(x.id)</td>
+            <td>#(x.username)</td>
+            <td id="password">#(x.password)</td>
+            <td>#(x.memo)</td>
+            <td>#(x.createdAt)</td>
+            <td>
+                #if(x.validTimeStart==null)
+                永久有效用户
+                #else
+                #(x.validTimeStart) 至 #(x.validTimeStart)
+                #end
+            </td>
+            <td>
+                <a class="mdui-btn mdui-ripple" href="/auth/edit/#(x.id)">修改</a>
+                <a class="mdui-btn mdui-ripple" href="/auth/delete/#(x.id)">删除</a>
+            </td>
+        </tr>
+        #end
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,10 @@
+#@layout()
+#define main()
+<div class="title">系统配置
+    <span style="float: right;"><a href="/config/add"><i class="mdui-icon material-icons">add</i> 添加</a></span>
+</div>
+#if(configPage != null)
+#include("_table.html")
+#@paginate(configPage.pageNumber, configPage.totalPage, "/config/")
+#end
+#end

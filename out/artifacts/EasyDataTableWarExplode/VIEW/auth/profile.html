@@ -1,0 +1,102 @@
+#@layout()
+#define main()
+<div class="mdui-row">
+    <div class="mdui-col-md-4 mdui-col-offset-md-1">
+        <div class="title">基础信息</div>
+        <div class="mdui-textfield">
+            <label class="mdui-textfield-label">用户名</label>
+            <input disabled class="mdui-textfield-input" type="text" value="#(profile.username??)"/>
+        </div>
+        <div class="mdui-textfield">
+            <label class="mdui-textfield-label">密码</label>
+            <input class="mdui-textfield-input" type="password" value="#(profile.password??)"/>
+        </div>
+        <div class="mdui-textfield">
+            <label class="mdui-textfield-label">备注</label>
+            <input disabled class="mdui-textfield-input" type="text" value="#(profile.memo??)"/>
+        </div>
+        <div class="mdui-textfield">
+            <label class="mdui-textfield-label">创建日期</label>
+            <input disabled class="mdui-textfield-input" type="text" value="#(profile.createdAt??)"/>
+        </div>
+        <div class="mdui-textfield">
+            <label class="mdui-textfield-label">帐户有效时间</label>
+            <input disabled class="mdui-textfield-input" type="text"
+                   value="#(profile.validTimeStart??) 至 #(profile.validTimeEnd??)"/>
+        </div>
+    </div>
+    <div class="mdui-col-md-4 mdui-col-offset-md-1">
+        <div class="title">权限列表</div>
+        <ul class="mdui-list">
+            <li class="mdui-list-item mdui-ripple">
+                <label class="mdui-checkbox">
+                    <input type="checkbox" #if(profile.authSuperAdmin== 1) checked #end disabled/>
+                    <i class="mdui-checkbox-icon"></i>
+                    超级管理员 权限
+                </label>
+            </li>
+            <li class="mdui-list-item mdui-ripple">
+                <label class="mdui-checkbox">
+                    <input type="checkbox" #if(profile.authLogin== 1) checked #end disabled/>
+                    <i class="mdui-checkbox-icon"></i>
+                    系统登陆 权限
+                </label>
+            </li>
+            <li class="mdui-list-item mdui-ripple">
+                <label class="mdui-checkbox">
+                    <input type="checkbox" #if(profile.authSelect== 1) checked #end disabled/>
+                    <i class="mdui-checkbox-icon"></i>
+                    数据查询 权限
+                </label>
+            </li>
+            <li class="mdui-list-item mdui-ripple">
+                <label class="mdui-checkbox">
+                    <input type="checkbox" #if(profile.authAdd== 1) checked #end disabled/>
+                    <i class="mdui-checkbox-icon"></i>
+                    数据添加 权限
+                </label>
+            </li>
+            <li class="mdui-list-item mdui-ripple">
+                <label class="mdui-checkbox">
+                    <input type="checkbox" #if(profile.authModify== 1) checked #end disabled/>
+                    <i class="mdui-checkbox-icon"></i>
+                    数据修改 权限
+                </label>
+            </li>
+            <li class="mdui-list-item mdui-ripple">
+                <label class="mdui-checkbox">
+                    <input type="checkbox" #if(profile.authDelete== 1) checked #end disabled/>
+                    <i class="mdui-checkbox-icon"></i>
+                    数据删除 权限
+                </label>
+            </li>
+            <li class="mdui-list-item mdui-ripple">
+                <label class="mdui-checkbox">
+                    <input type="checkbox" #if(profile.authLog== 1) checked #end disabled/>
+                    <i class="mdui-checkbox-icon"></i>
+                    查看系统日志 权限
+                </label>
+            </li>
+            <li class="mdui-list-item mdui-ripple">
+                <label class="mdui-checkbox">
+                    <input type="checkbox" #if(profile.authCreateAccount== 1) checked #end disabled/>
+                    <i class="mdui-checkbox-icon"></i>
+                    创建授权用户 权限
+                </label>
+            </li>
+        </ul>
+    </div>
+</div>
+
+#end
+
+#define footer()
+<script>
+    toastr.warning("您仅能在有效期内登陆该账号！");
+    $("input[type=password]").mouseover(function () {
+        $(this).attr('type', 'text');
+    }).mouseout(function () {
+        $(this).attr('type', 'password');
+    });
+</script>
+#end

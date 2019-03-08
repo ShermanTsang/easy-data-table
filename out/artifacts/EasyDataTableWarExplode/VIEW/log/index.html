@@ -1,0 +1,8 @@
+#@layout()
+#define main()
+<div class="title">系统操作日志</div>
+#if(logPage != null)
+#include("_table.html")
+#@paginate(logPage.pageNumber, logPage.totalPage, "/log/")
+#end
+#end

@@ -1,0 +1,60 @@
+#define layout()
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>#(getConfig("siteName"))</title>
+    <link rel="stylesheet" type="text/css" href="#(path)/RESOURCE/css/mdui.min.css">
+    <link rel="stylesheet" type="text/css" href="#(path)/RESOURCE/css/packages.css">
+    <link rel="stylesheet" type="text/css" href="#(path)/RESOURCE/css/app.css">
+    <!--[if lt IE 9]>
+    <script src="#(path)/RESOURCE/js/html5shiv.min.js"></script>
+    <script src="#(path)/RESOURCE/js/respond.min.js"></script>
+    <![endif]-->
+    #@header?()
+<body class="mdui-bottom-nav-fixed mdui-appbar-with-toolbar mdui-appbar-with-tab-larger">
+<div class="mdui-container mdui-m-t-3">
+    #include("_header.html")
+    <div class="mdui-row">
+        #@main()
+    </div>
+    <div class="mdui-bottom-nav mdui-bottom-nav-scroll-hide mdui-color-white" style="border-top: 2px solid #EEEEEE;">
+        <a onclick="history.back(-1);" class="mdui-ripple">
+            <i class="mdui-icon material-icons">&#xe5c4;</i>
+            <label>退回上页</label>
+        </a>
+        <a href="#(path)/" class="mdui-ripple">
+            <i class="mdui-icon material-icons">&#xe84f;</i>
+            <label>返回首页</label>
+        </a>
+        <a href="#(path)/auth/profile" class="mdui-ripple">
+            <i class="mdui-icon material-icons">&#xe7ff;</i>
+            <label>我的账号</label>
+        </a>
+        <a href="#(path)/auth/account" class="mdui-ripple">
+            <i class="mdui-icon material-icons">&#xe7f0;</i>
+            <label>授权管理</label>
+        </a>
+        <a href="#(path)/log" class="mdui-ripple">
+            <i class="mdui-icon material-icons">&#xe240;</i>
+            <label>操作日志</label>
+        </a>
+        <a href="#(path)/table" class="mdui-ripple">
+            <i class="mdui-icon material-icons">&#xe3a3;</i>
+            <label>表格控制</label>
+        </a>
+        <a href="#(path)/config" class="mdui-ripple">
+            <i class="mdui-icon material-icons">&#xe869;</i>
+            <label>系统配置</label>
+        </a>
+    </div>
+</div>
+<script type="text/javascript" src="#(path)/RESOURCE/js/mdui.min.js"></script>
+<script type="text/javascript" src="#(path)/RESOURCE/js/packages.js"></script>
+#include("_notify.html")
+#@footer?()
+</body>
+</html>
+#end

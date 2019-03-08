@@ -1,0 +1,32 @@
+<div class="mdui-table-fluid">
+    <table class="mdui-table mdui-table-hoverable">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>列名</th>
+            <th>分类</th>
+            <th>列名</th>
+            <th>类型</th>
+            <th>可见性</th>
+            <th>可图表分析</th>
+        </tr>
+        </thead>
+        <tbody>
+        #for(x : dataTablePage.getList())
+        <tr>
+            <td>#(x.id)</td>
+            <td>#(x.name)</td>
+            <td>#(x.memo)</td>
+            <td>#(x.category)</td>
+            <td>#(x.type)</td>
+            <td>#(x.isVisible)</td>
+            <td>#(x.isChartAble)</td>
+            <td>
+                <a class="mdui-btn mdui-ripple" href="/table/edit/#(x.id)">修改</a>
+                <a class="mdui-btn mdui-ripple" href="/table/delete/#(x.id)">删除</a>
+            </td>
+        </tr>
+        #end
+        </tbody>
+    </table>
+</div>

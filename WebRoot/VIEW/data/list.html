@@ -1,0 +1,78 @@
+#@layout()
+#define main()
+<form action="/data" method="post" onSubmit="return formCheck();">
+    <div class="mdui-row">
+        <div class="mdui-col-md-6 mdui-col-offset-md-3 searchBar">
+            <input type="text" placeholder="搜索" name="keyword"
+                   value="#(session.keyword ??)" required/>
+        </div>
+    </div>
+    <div class="title">筛选项<span style="float: right"><label class='mdui-checkbox'><input
+            onclick="swapCheck()"
+            type='checkbox'/><i
+            class='mdui-checkbox-icon'></i>全选</label></span></div>
+    <div>
+        #for(m:getColumnCategory())
+        <div class="mdui-tab mdui-tab-scrollable" mdui-tab style="padding-left: 0;">
+            <a class="categoryTitle">#(m.category)</a>
+            #for(n:getColumnByCategory(m.category))
+            <a><label class='mdui-checkbox'><input type='checkbox' name='option'
+                                                   value='#(n.name)'/><i
+                    class='mdui-checkbox-icon'></i>#(n.memo)</label></a>
+            #end
+        </div>
+        #end
+    </div>
+</form>
+#if(dataPage != null)
+<div class="title">搜索结果</div>
+#include("_card.html")
+#@paginate(dataPage.pageNumber, dataPage.totalPage, "/data/")
+#end
+#end
+
+#define footer()
+<script type="text/javascript">
+    $(document).ready(function () {
+        var s = document.getElementsByName("option");
+        for (var i = 0; i < s.length; i++) {
+            var str = "#(session.option ??)";
+            strArray = str.split(",");
+            for (var j = 0; j < strArray.length; j++) {
+                if (s[i].value == strArray[j]) {
+                    s[i].checked = true;
+                }
+            }
+        }
+    });
+
+    var isCheckAll = false;
+
+    function swapCheck() {
+        if (isCheckAll) {
+            $("input[type='checkbox']").each(function () {
+                this.checked = false;
+            });
+            isCheckAll = false;
+            toastr.success("已取消全选");
+        } else {
+            $("input[type='checkbox']").each(function () {
+                this.checked = true;
+            });
+            isCheckAll = true;
+            toastr.success("全选所有检索项");
+        }
+    }
+
+    function formCheck() {
+        if ($("input:checked").length < 3 || $("input:checked") == null) {
+            toastr.warning("请至少选择三个筛选项");
+            return false;
+        }
+        else {
+            toastr.info("正在数据库中检索");
+            return true;
+        }
+    }
+</script>
+#end

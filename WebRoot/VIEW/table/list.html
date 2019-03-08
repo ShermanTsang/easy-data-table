@@ -1,0 +1,10 @@
+#@layout()
+#define main()
+<div class="title">数据表格配置
+    <span style="float: right;"><a href="/table/add"><i class="mdui-icon material-icons">add</i> 添加</a></span>
+</div>
+#if(dataTablePage != null)
+#include("_table.html")
+#@paginate(dataTablePage.pageNumber, dataTablePage.totalPage, "/table/")
+#end
+#end
